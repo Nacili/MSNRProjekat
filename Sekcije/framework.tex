@@ -1,0 +1,48 @@
+\section{Framework}
+\label{sec:framework}
+Ono što čini Clojure atraktivnim je veliki spektar šablona i modularnih biblioteka. Dovoljno je univerzalan da radi na gotovo svakom JVM-u, dok je dinamičan do te mere da nudi širok spektar funkcionalnosti.
+
+
+Neki od poznatijih framework-a za Clojure su:\cite{frameworks}
+
+\begin{itemize}
+            \item Luminus
+            \item Hoplon
+            \item ClojureHomePage
+\end{itemize}
+
+\subsection{Luminus}
+\label{subsec:luminus}
+Luminus mikro-framework je zasnovan na skupu laganih(malih) biblioteka, čiji je cilj da obezbedi robustnu, skalabilnu i jednostavnu platformu. Lumius funkcioniše kao vrsta šablonskong sistema, obezbeđujući ugrađene razvojne sisteme i neke
+podrazumevane module za jumpstart razvoj.\cite{luminus}
+
+% Ne treba apostrof na S i nisam sigurna da razumem ovu rečenicu. Možda malo preformulisati?
+% S obzirom na to, postoji nešto što se može reći za kreiranje purpose-built modula za specifičnu
+% implementaciju, i da se odluči da se to ne koristi radi bržeg razvoja, može imati svoje troškove u budućnosti.
+
+S obzirom da ima mogućnost za jumpstart razvoj, psotoji moduli za kreiranje specifične implementacije. U slučaju
+da se takvi moduli ne koriste da bi se ubrzao razvoj, moguće je da se pojave dodatni troškovi u budućnosti.
+
+Postoji mogućnost da se projekat započne veoma brzo, a istovremeno onemoguće moduli od kojih nema trenutne koristi. Ovo rezultuje niskom potrošnjom resursa i visokom efikasnošću implementacije i to zahvaljujući tome što je modularnost unapred definisana.\cite{frameworks}
+
+\subsection{Hoplon}
+\label{subsec:hoplon}
+Hoplon je skup Clojure i ClojureScript biblioteka, povezanih zajedno sa Boot build alatom, koji ujedinjuju neke idiosinkrazije veb platforme i predstavljaju interesantan način dizajniranja i izrade veb stranica sa jednom stranicom.\cite{hoplon}
+
+
+Hoplon pruža kompajler za izradu frontend veb aplikacija, i  sadrži sledeće biblioteke od kojih zavisi:\cite{hoplon_wiki}
+    \begin{enumerate}
+        \item Javelin -
+        Biblioteka za protok podataka za kontrolu stanja klijenta. Hoplon se čvrsto
+        integrira sa Javelinom kako bi reaktivno vezao DOM elemente na grafikonu koji se nalazi u pozadini
+        Javelinove ćelije.
+        \item Castra -
+        Potpuno opremljena RPC biblioteka za Clojure i ClojureScript, obezbeđujuć i
+        okruženje servera. (opciono)
+    \end{enumerate}
+
+\subsection{ClojureHomePage}
+\label{subsec:clojurehomepage}
+ClojureHomePage je jedinstven framework, koji se u potpunosti fokusira na kreiranje veb stranice koja koristi Clojure za front i backend.
+Podržava širok raspon veb zaglavlja, varijabli okruženja i ruta, i sposoban je generirati prilično složen HTML i CSS. 
+Pored toga, njegova podrška za SKL funkcije znači da, dok se frontend generiše, pozadina se takođe generiše na veoma čvrsto integrisan i moćan način.\cite{frameworks}

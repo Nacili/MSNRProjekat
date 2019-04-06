@@ -1,0 +1,89 @@
+\section{Instalacija}
+\label{sec:instalacija}
+Clojure pruža skup alata komandne linije koji se mogu koristiti za pokretanje Clojure REPL-a, upotrebu Java i Clojure biblioteka i pokretanje Clojure programa.
+\subsection{Linux}
+\label{subsec:linux}
+\begin{enumerate}
+            \item Obezbediti da su instalirani paketi: \texttt{curl}, \texttt{rlwrap}, i \texttt{java}.
+            Provera verzija pomenutih paketa se vrši putem komandi:
+            \begin{tcolorbox}[colback=green!5!white,colframe=green!5!white,fontupper=\ttfamily]
+            \$ curl -V \newline
+            \$ rlwrap -v \newline
+            \$ java -version
+            \end{tcolorbox}
+            Instalacija:
+            \begin{tcolorbox}[colback=green!5!white,colframe=green!5!white,fontupper=\ttfamily]
+            \$ sudo apt install curl \newline
+            \$ sudo apt install rlwrap
+            \end{tcolorbox}
+            Ako nije instalirana Java:
+            \begin{tcolorbox}[colback=green!5!white,colframe=green!5!white,fontupper=\ttfamily]
+            \$ sudo apt install default-jre \newline
+            \$ sudo apt install openjdk-11-jdk
+            \end{tcolorbox}
+            \item Preuzeti i instalirati pomoću linux skripta za instalaciju, koji će kreirati fajlove /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:
+\begin{tcolorbox}[colback=green!5!white,colframe=green!5!white,fontupper=\ttfamily]
+
+\$ curl -O https://download.clojure.org/\\install/linux-install-1.10.0.442.sh
+
+\$ chmod +x linux-install-1.10.0.442.sh
+
+\$ sudo ./linux-install-1.10.0.442.sh
+\end{tcolorbox}
+
+\end{enumerate}
+
+\subsection{Windows}
+\label{subsec:windows}
+Trenutno postoji samo alfa verzija Clojure-a za Windows. Najpre se sa \href{https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows}{link-a} preuzme poslednja verzija instalacionog fajla. Nakon pokretanja instalacije, biće ponuđene 3 moguće lokacije za instalaciju:\newline
+\begin{tcolorbox}[colback=green!5!white,colframe=green!5!white,fontupper=\ttfamily]
+Possible install locations:\newline
+  1) \path{\\Drive\Home\Documents\WindowsPowerShell\Modules}\\
+  2) \path{C:\Program Files\WindowsPowerShell\Modules}\\
+  3) \path{C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\ }\\
+Enter number of preferred install location: 
+\end{tcolorbox}
+Treba imati u vidu da pri izboru 1. opcije nisu potrebne admin privilegije, ali se kreira dodatni fajl u \path{\Documents}, dok za 2. i 3. opciju je potrebno imati admin privilegije.
+
+\subsection{Pokretanje}
+\label{subsec:pokretanje}
+Nakon preuzimanja i instalacije potrebnih alata, REPL se pokreće pomoću komande \texttt{clj}:
+\begin{tcolorbox}[colback=green!5!white,colframe=green!5!white,fontupper=\ttfamily]
+\$ clj\\
+Clojure 1.10.0\\
+user=>
+\end{tcolorbox}
+
+Prilikom ulaska u REPL, moguće je kucati Clojure izraze i pokretati ih pritiskom na Enter.
+Postoji veliki broj Clojure i Java biblioteka koje nude razne funkcionalnosti. Često korišćena biblioteka je \href{https://github.com/clj-time/clj-time}{clj-time} koja radi sa datumima i vremenom.
+
+
+Da bi se koristila ova biblioteka potrebno je napraviti \textbf{deps.edn} fajl za deklarisanje zavisnosti:
+\begin{tcolorbox}[colback=green!5!white,colframe=green!5!white,fontupper=\ttfamily]
+\{:deps
+
+
+\hspace*{5mm}\{clj-time \{:mvn/version ''0.14.2''\}\}\}
+\end{tcolorbox}
+Za pisanje programa, potrebno je napraviti novi direktorijum i kopirati \textbf{deps.edn} fajl u odgovarajući direktorijum.
+
+Komanda \texttt{clj} automatski traži izvorne fajlove u \textbf{src} direktorijumu pa je potrebno fajl sa ekstenzijom \underline{\textit{.clj}} sačuvati na putanji \path{\src\program.clj} i pokrenuti:
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!5!white,fontupper=\ttfamily]
+\$ clj -m program
+\end{tcolorbox}
+%\subsubsection{Clojure online}
+ 
+%\subsubsection{Lokalno građenje}
+%Clojure je moguće graditi lokalno (neophodni su paketi \texttt{git}, \texttt{java} i \texttt{maven}):
+%\begin{tcolorbox}[colback=green!5!white,colframe=green!5!white,fontupper=\ttfamily]
+%    \$ git clone https://github.com/clojure/clojure.git\newline
+%    \$ cd clojure\newline
+%    \$ mvn -Plocal -Dmaven.test.skip=true package
+%\end{tcolorbox}
+%Pokretanje REPL pomoću lokalnog jar-a:
+%\begin{tcolorbox}[colback=green!5!white,colframe=green!5!white,fontupper=\ttfamily]
+%    java -jar clojure.jar
+%\end{tcolorbox}
+
+Pored instalacije na lokalnom računaru, REPL je moguće koristiti i u web pregledaču pomoću servisa \href{https://repl.it/languages/clojure}{repl.it}. Ova web stranica omogućuje korišćenje više nezavisnih REPL interfejsa, kao i povezivanje sa Github nalogom.

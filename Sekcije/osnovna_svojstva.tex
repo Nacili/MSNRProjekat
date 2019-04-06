@@ -1,0 +1,30 @@
+\section{Osnovna svojstva}
+\label{sec:osnovnasvojstva}
+
+Clojure je dijalekat programskog jezika Lisp. Drugim rečima, oba jezika počivaju na istim postulatima. U saglasnosti sa tim, Clojure je, pre svega, funkcionalni programski jezik, a pored toga, ima bliskosti i sa konkurentnom i reaktivnom paradigmom\cite{clojure}.
+
+\subsection{Platforme}
+\label{subsec:platforme}
+
+Budući da je Clojure funkcionalni programski jezik, njegova veza sa programskim jezikom Java, koji je predstavnik objektno-orijentisane paradigme, može biti iznenađujuća. Clojure je dizajniran tako da bude tzv. \textit{hosted} programski jezik - za razliku od jezika kao što su C, Python ili Haskell koji prevode svoj izvorni kôd u mašinski ili međukod, Clojure prevodi izvorni kôd u Java bajtkod koji će se potom izvršavati uz pomoć Java Virtuelne Mašine (engl. \textit{Java Virtual Machine}). JVM je izabrana kao standardna platforma za Clojure zbog svoje portabilnosti, sigurnosti, kao i rasprostranjenosti u industriji.
+
+
+Kako poslednjih godina raste naklonost ka funkcionalnim jezicima, tako raste i broj platformi kompatibilnih sa ovim jezikom. Neke od implementacija koje koriste alternativne platforme su ClojureScript \cite{clojure_script}, ClojureCLR\cite{clojure_clr}, clojure-py\cite{clojure_py} omogućava integraciju sa Pythonom, Ferret\cite{ferret} sa C++, clojerl\cite{clojerl} sa Erlangom i Joker\cite{joker} interpreter i linter pisan u programskom jeziku Go.
+
+
+\subsection{Clojure kao funkcionalni programski jezik}
+\label{subsec:funkcionalni}
+
+Kao i u svim funkcionalnim jezicima, u Clojure-u se funkcije posmatraju kao \emph{građani prvog reda}; drugim rečima, ne postoji ograničenje kako se funkcije mogu kreirati ili koristiti. Međutim, Clojure nije \emph{čist} funkcionalni jezik, tako da se ne drži strogih pravila o referencijalnoj transparentnosti\cite{transparency_2}\cite{transparency}.
+
+Jedna od karakteristika koju Clojure deli sa programskim jezikom Lisp jeste \textbf{homoikoničnost} (engl. \textit{homoiconicity}). Izvorni kôd homoikoničnih programskih jezika se posmatra kao struktura podataka napisanog u tom istom programskom jeziku. Ovo svojstvo omogućava programima napisanim u Clojure-u da manipulišu drugim Clojure programima, kao i da ih generišu.
+
+Raspolažući samo sa imutabilnim objektima, Clojure na taj način rešava probleme koje donosi mutabilnost objekata. Budući da to rešenje doprinosi činjenici da se narušavaju performanse nekih operacija na strukturama podataka kao što su vektori i heš mape, te strukture su interno implementirane uz pomoć heš stabala.
+
+Kako lokalne promenljive ne postoje u Clojure-u, petlje se emuliraju uz pomoć (repne) rekurzije. Mnogi funkcionalni programski jezici omogućavaju da repna rekurzija ne koristi stek okvire, time održavajući konstantnu prostornu složenost rekurzivnih poziva; Clojure nema tu mogućnost, zbog načina na koji JVM poziva funkcije. Ovaj problem se prevazilazi korišćenjem operatora \texttt{recur}\cite{livingclojure}.
+
+\subsection{Dinamičko programiranje}
+\label{subsec:dinamickoprogramiranje}
+
+Prilikom programiranja u programskom jeziku Clojure, nismo ograničeni samo na kompajliranje i pokretanje izvršnog kôda - postoji i mogućnost interaktivnog pisanja programa.
+Iako se Clojure može ugraditi u Java kôd, osnovni interfejs za programiranje predstavlja \textbf{REPL} (\textit{\textbf{R}ead-\textbf{E}val-\textbf{P}rint-\textbf{L}oop}). REPL je konzolni interfejs gde se napisani Clojure kôd evaluira za svaku napisanu liniju. Ovakav pristup programiranju daje brz odziv na promene u programu što čini neke zadatke jednostavnijim, na primer pronalaženje i uklanjanje bagova. 

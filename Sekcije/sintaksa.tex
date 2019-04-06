@@ -1,0 +1,95 @@
+\section{Sintaksna struktura}
+\label{sec:sintaksnastruktura}
+
+Kako je Clojure dijalekat programskog jezika Lisp, i sintaksa ta dva jezika je slična. Ono što je karakteristično za ovakve jezike jeste njihova sintaksna \emph{uniformnost}.
+
+\subsection{Literali i operatori}
+\label{subsec:literalioperatori}
+
+\lstinputlisting[language=Clojure, caption={Literali},frame=single, label=literali]{Kodovi/literali.clj}
+
+\textbf{Literali} su najjednostavniji izrazi - to su oni izrazi koji se evaluiraju u sami sebe. Neki od osnovnih literala u programskom jeziku Clojure su:
+
+\begin{itemize}
+    \item Celi brojevi
+    \item Brojevi u pokretnom zarezu
+    \item Razlomljeni brojevi
+    \item Niske
+    \item Ključne reči
+\end{itemize}
+
+Brojevi se predstavljaju na način koji je standardan u programskim jezicima, niske se predstavljaju sa dvostrukim navodnicima (jednostruki nisu dozvoljeni), dok su ključne reči obeležene sa dvotačkom ispred reči (ali reč je navedena \emph{bez} navodnika).
+Ključne reči se koriste za referisanje, na primer prilikom dohvatanja elemenata mape.
+
+Literali se koriste zajedno uz pomoć \textbf{operatora} - ugrađenih funkcija. Korišćenje operatora (i drugih definisanih funkcija) se obavlja na sledeći način:
+
+\begin{verbatim}
+(operator operand_1 operand_2)
+\end{verbatim}
+
+Opisan je binarni, ali se na analogan način koristi i n-arni operator. Primetimo da su zagrade \emph{obavezne}, kao i da se operandi razdvajaju blanko karakterom (zapeta se takođe smatra blanko karakterom). Neki od operatora su dati u narednom listingu:
+
+\lstinputlisting[language=Clojure, caption={Aritmetički, relacioni i logički operatori},frame=single, label=operatori]{Kodovi/operatori.clj}
+
+Operator \texttt{/} se različito ponaša u zavisnosti od operanada: ukoliko su oba operanda celi brojevi, onda je rezultat izračunavanja tog izraza razlomljeni broj ili ceo broj (ako je prvi operand deljiv drugim). Ukoliko je neki od operanada broj u pokretnom zarezu, onda je i rezultat broj u pokretnom zarezu.
+
+Dodeljivanje imena vrednostima se vrši pomoću operatora \texttt{def}:
+
+\begin{verbatim}
+(def ime_konstante operand_1)
+\end{verbatim}
+
+U drugim programskim jezicima, vrednosti se dodeljuju promenljivama. To nije slučaj u Clojure-u, zbog njegove imutabilne prirode.
+
+\subsection{Kontrola toka}
+\label{subsec:kontrolatoka}
+
+U Clojure-u nisu izostali mehanizmi kontrole toka. Za naredbu grananja, koristi se operator \texttt{if}:
+
+\lstinputlisting[language=Clojure, caption={Operatori \texttt{if} i \texttt{do}},frame=single, label=operator_if]{Kodovi/operator_if.clj}
+
+Operator \texttt{if}, ukoliko je vrednost prvog operanda \texttt{true} vraća vrednost drugog operanda; inače, vraća vrednost trećeg operanda. Else grana u okviru operatora \texttt{if} nije obavezna.
+
+Treba napomenuti da se sve vrednosti tretiraju kao tačne, osim literala \texttt{nil} i \texttt{false}. Operator \texttt{and} vraća poslednju tačnu vrednost ukoliko su svi operandi tačni; inače vraća prvu netačnu vrednost. Analogno, operator \texttt{or} vraća poslednju netačnu vrednost ukoliko su svi operandi netačni; inače, vraća se vrednost prvog tačnog operanda.
+
+Operator \texttt{do} omogućava da se izvrši više operacija u nekoj ili obe grane. Povratna vrednost ovog operatora je vrednost poslednjeg operanda.
+
+\subsection{Definisanje funkcija}
+\label{subsec:definisanjefja}
+
+Korišćenje funkcija je identično korišćenju operatora. Njihovo definisanje se vrši pomoću operatora \texttt{defn} sledeći način:
+
+\lstinputlisting[language=Clojure, caption={Definisanje funkcija sa tačnim i proizvoljnim brojem parametara},frame=single, label=funkcije]{Kodovi/def_funkcija.clj}
+
+Prvi operand je ime funkcije (navodi se \emph{bez} navodnika), zatim (opciono) postavljanje deskripcije koja se može dohvatiti operatorom \texttt{doc}, treći operand je vektor koji sadrži argumente funkcije i, na kraju, povratna vrednost funkcije.
+
+Primetimo da je moguće definisati funkciju tako da uzima proizvoljan broj parametara; to se postiže korišćenjem simbola \texttt{\&} koji će poslate parametre smestiti u listu.
+
+\subsection{Strukture podataka}
+\label{strukturepodataka}
+
+U Clojure-u je dostupno korišćenje tradicionalnih struktura podataka kao što su liste, vektori, mape i skupovi.  Treba napomenuti da elementi ovih struktura podataka ne moraju biti istog tipa.
+
+Liste su definisane na sledeći način:
+
+\begin{verbatim}
+'(element_1 element_2 element_3)
+\end{verbatim}
+
+Na sličan način se definišu i vektori, ali se koriste simboli \texttt{[} i \texttt{]}. Operatorom \texttt{nth} se može dohvatiti n-ti element liste, dok se ista stvar za vektore postiže korišćenjem operatora \texttt{get}. Dodavanje novih elemenata u listu ili vektor se vrši pomoću operatora \texttt{conj}; novi element će biti dodat na početak liste, odnosno na kraj vektora.
+
+Mape se definišu ili putem operatora \texttt{hash-map} ili uz pomoć vitičastih zagrada:
+
+\begin{verbatim}
+{:prva_kljucna_rec vrednost_1 :druga_kljucna_rec vrednost_2}
+\end{verbatim}
+
+Pomenuti \texttt{get} operator će vratiti vrednost navedene ključne reči.
+
+Skupovi su vektori čiji su svi elementi jedinstveni. Njihova definicija je:
+
+\begin{verbatim}
+#{element_1 element_2 element_3}
+\end{verbatim}
+
+Naknadna pojavljivanja istih elemenata u okviru istog skupa biće ignorisana. Za proveru pripadnosti neke vrednosti skupu koristi se operator \texttt{contains?}.

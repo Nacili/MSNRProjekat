@@ -9,8 +9,9 @@ Clojure je dijalekat programskog jezika Lisp. Drugim rečima, oba jezika počiva
 Budući da je Clojure funkcionalni programski jezik, njegova veza sa programskim jezikom Java, koji je predstavnik objektno-orijentisane paradigme, može biti iznenađujuća. Clojure je dizajniran tako da bude tzv. \textit{hosted} programski jezik - za razliku od jezika kao što su C, Python ili Haskell koji prevode svoj izvorni kôd u mašinski ili međukod, Clojure prevodi izvorni kôd u Java bajtkod koji će se potom izvršavati uz pomoć Java Virtuelne Mašine (engl. \textit{Java Virtual Machine}). JVM je izabrana kao standardna platforma za Clojure zbog svoje portabilnosti, sigurnosti, kao i rasprostranjenosti u industriji.
 
 
-Kako poslednjih godina raste naklonost ka funkcionalnim jezicima, tako raste i broj platformi kompatibilnih sa ovim jezikom. Neke od implementacija koje koriste alternativne platforme su ClojureScript \cite{clojure_script}, ClojureCLR\cite{clojure_clr}, clojure-py\cite{clojure_py} omogućava integraciju sa Pythonom, Ferret\cite{ferret} sa C++, clojerl\cite{clojerl} sa Erlangom i Joker\cite{joker} interpreter i linter pisan u programskom jeziku Go.
+Integrisanost sa Java-om omogućuje Clojure-u i da koristi Java klase, metode i objekte. Rič Hiki je ovu funkcionalnost nazvao \emph{Java Interop}\cite{braveclojure}. Moguće je i korišćenje Clojure kôda u okviru programskog jezika Java uz pomoć paketa \texttt{clojure.java.api}.
 
+Kako poslednjih godina raste naklonost ka funkcionalnim jezicima, tako raste i broj platformi kompatibilnih sa ovim jezikom. Neke od implementacija koje koriste alternativne platforme su ClojureScript \cite{clojure_script} omogućava integraciju sa JavaScript-om, ClojureCLR\cite{clojure_clr} sa CLR-om, clojure-py\cite{clojure_py} sa Pythonom, Ferret\cite{ferret} sa C++-om, clojerl\cite{clojerl} sa Erlang-om i Joker\cite{joker} interpreter i linter pisan u programskom jeziku Go.
 
 \subsection{Clojure kao funkcionalni programski jezik}
 \label{subsec:funkcionalni}
